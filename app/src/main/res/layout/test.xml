@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     android:background="@color/md_grey_50"
     android:gravity="center"
+    android:shrinkColumns="*"
+    android:stretchColumns="*"
     tools:context="co.prandroid.tictactoe.MainActivity">
 
     <TextView
@@ -15,10 +17,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="@dimen/tvPointSize"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textSize="@dimen/tvPointSize"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:typeface="serif"></TextView>
 
@@ -38,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
-            android:textSize="@dimen/tvPointSize"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -47,8 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Vs"
-            android:textSize="@dimen/tvPointSize" />
+            android:text="Vs" />
 
         <TextView
             android:id="@+id/textViewGuest"
@@ -56,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="tvGuestClick"
-            android:textSize="@dimen/tvPointSize"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -83,11 +84,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                android:background="@color/black"
+                android:textSize="300sp" />
 
             <Button
                 android:id="@+id/btn2"
@@ -95,11 +93,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                android:background="@color/black"
+                android:textSize="300sp" />
 
             <Button
                 android:id="@+id/btn3"
@@ -107,11 +102,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                android:background="@color/black"
+                android:textSize="300sp" />
         </TableRow>
 
         <TableRow
@@ -121,39 +113,15 @@
 
             <Button
                 android:id="@+id/btn4"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                style="@style/PlayerText" />
 
             <Button
                 android:id="@+id/btn5"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                style="@style/PlayerText" />
 
             <Button
                 android:id="@+id/btn6"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                style="@style/PlayerText" />
         </TableRow>
 
         <TableRow
@@ -163,39 +131,15 @@
 
             <Button
                 android:id="@+id/btn7"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                style="@style/PlayerText" />
 
             <Button
                 android:id="@+id/btn8"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                style="@style/PlayerText" />
 
             <Button
                 android:id="@+id/btn9"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:onClick="btnClick"
-                android:textColor="@color/white"
-                android:textSize="70sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                style="@style/PlayerText" />
         </TableRow>
 
 
@@ -215,16 +159,14 @@
             android:id="@+id/textViewPoint1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="@dimen/tvPointSize" />
+            android:layout_margin="10dp" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="10dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
-            android:background="@color/black"
-            android:textSize="@dimen/tvPointSize">
+            android:background="@color/black">
 
         </View>
 
@@ -232,9 +174,7 @@
             android:id="@+id/textViewPoint2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="@dimen/tvPointSize"
-            />
+            android:layout_margin="10dp" />
     </LinearLayout>
 
     <LinearLayout

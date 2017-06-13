@@ -1,7 +1,7 @@
 package co.prandroid.tictactoe
 
 
-import android.content.Intent
+import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -9,15 +9,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
-import android.R.id.edit
-import android.content.Context
-import android.content.SharedPreferences
-import android.content.Context.MODE_PRIVATE
-import android.view.Window
-import android.widget.EditText
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     var  pointFriend: Int = 0
 
     var guestName:String?=""
+
+    var isPlaying: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +77,9 @@ class MainActivity : AppCompatActivity() {
             topLinear.visibility=View.VISIBLE
             textViewYou.text="You"
             textViewGuest.text="Mobile"
+            textViewGuest.isClickable = false
+            imageViewMobile.setImageResource(R.drawable.mobileon)
+            imageViewFriends.setImageResource(R.drawable.friend)
         }
         if(type=="friend"){
             println("Guest name is: $guestName")
@@ -91,6 +91,10 @@ class MainActivity : AppCompatActivity() {
             topLinear.visibility=View.VISIBLE
             textViewYou.text="You"
             textViewGuest.text=guestName
+
+            textViewGuest.isClickable = true
+            imageViewMobile.setImageResource(R.drawable.mobile)
+            imageViewFriends.setImageResource(R.drawable.friendon)
         }
     }
 
@@ -149,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnSelected.isEnabled=false
-
+        isPlaying = true
     }
 
     // playing category
@@ -405,18 +409,34 @@ class MainActivity : AppCompatActivity() {
     fun imgMobileClick(view: View){
         strType="mobile"
         setPointOnView(strType)
-        textViewGuest.isClickable=false
-        imageViewMobile.setImageResource(R.drawable.mobileon)
-        imageViewFriends.setImageResource(R.drawable.friend)
+
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString(getString(R.string.type), strType)
+        editor.commit()
+        if (isPlaying) {
+            val intent = intent
+            finish()
+            startActivity(intent)
+        }
     }
 
     //
     fun imgFriendsClick(view: View){
         strType="friend"
         setPointOnView(strType)
-        textViewGuest.isClickable=true
-        imageViewMobile.setImageResource(R.drawable.mobile)
-        imageViewFriends.setImageResource(R.drawable.friendon)
+
+
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString(getString(R.string.type), strType)
+        editor.commit()
+
+        if (isPlaying) {
+            val intent = intent
+            finish()
+            startActivity(intent)
+        }
     }
 
     //

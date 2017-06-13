@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tvPointSize">24sp</dimen>
+    <dimen name="button_width">100dp</dimen>
+    <dimen name="button_height">100dp</dimen>
+
+    <dimen name="cellTextSize">50sp</dimen>
+
+    <dimen name="margin">20sp</dimen>
+    <dimen name="titleTextSize">32sp</dimen>
+</resources>
