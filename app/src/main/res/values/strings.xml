@@ -15,4 +15,5 @@
 
     <string name="ok">OK</string>
     <string name="no">NO</string>
+    <string name="game_type">game type</string>
 </resources>
