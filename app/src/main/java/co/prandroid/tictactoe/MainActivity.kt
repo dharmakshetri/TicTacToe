@@ -58,17 +58,16 @@ class MainActivity : AppCompatActivity() {
         guestName=sharedPref.getString(getString(R.string.guestName)," ")
         strType=sharedPref.getString(getString(R.string.type),"mobile")
         noOfCards = sharedPref.getInt("gs", 3)
+
         println(" when geting data: noOfCards $noOfCards")
         println(" when geting data: you -> $pointYou   Mobile-> $pointMobile   Type: $strType")
         println(" when geting data: you -> $pointYouF   $guestName-> $pointFriend   Type: $strType")
 
-
-        //tvType.text=" you vs $strType"
-
         linearPoints.visibility=View.VISIBLE
         setPointOnView(strType)
         setUpNoOfCardsView()
-
+        playerOne.clear()
+        playerTwo.clear()
     }
 
     private fun setUpNoOfCardsView() {
@@ -95,7 +94,6 @@ class MainActivity : AppCompatActivity() {
                 noOfCards = 3
             }
         }
-
     }
 
     fun setViews() {
@@ -209,8 +207,6 @@ class MainActivity : AppCompatActivity() {
     fun playGame(cellId: Int, btnSelected: Button){
 
         mpTap?.start()
-
-
         if(activePlayer==1){
             btnSelected.text="X"
             btnSelected.setBackgroundResource(R.color.md_blue_A700)
@@ -220,13 +216,14 @@ class MainActivity : AppCompatActivity() {
 
             var winnerFound = findWinner(strType)
             println("winnerFound:$winnerFound")
+            var total = playerOne.size + playerTwo.size
+            println("Total ListSize:$total")
             when (noOfCards) {
                 3 -> {
                     if (winnerFound)
                         return
                     if ((playerOne.size + playerTwo.size < 9)) {
                         playingType(strType)
-
                     } else {
                         winnerDialog("One", "Game Draw, would you like to play again!!!");
                     }
@@ -236,7 +233,6 @@ class MainActivity : AppCompatActivity() {
                         return
                     if ((playerOne.size + playerTwo.size < 16)) {
                         playingType(strType)
-
                     } else {
                         winnerDialog("One", "Game Draw, would you like to play again!!!");
                     }
@@ -249,7 +245,26 @@ class MainActivity : AppCompatActivity() {
             btnSelected.setBackgroundResource(R.color.md_green_A700)
             playerTwo.add(cellId)
             activePlayer=1
-            findWinner(strType)
+            var winnerFound = findWinner(strType)
+            println("winnerFound:$winnerFound")
+            var total = playerOne.size + playerTwo.size
+            println("Total ListSize:$total")
+            when (noOfCards) {
+                3 -> {
+                    if (winnerFound)
+                        return
+                    if ((playerOne.size + playerTwo.size == 9)) {
+                        winnerDialog("One", "Game Draw, would you like to play again!!!");
+                    }
+                }
+                4 -> {
+                    if (winnerFound)
+                        return
+                    if ((playerOne.size + playerTwo.size == 16)) {
+                        winnerDialog("One", "Game Draw, would you like to play again!!!");
+                    }
+                }
+            }
         }
 
         btnSelected.isEnabled=false
@@ -338,6 +353,8 @@ class MainActivity : AppCompatActivity() {
     // display dialog box if the game draw and either winning
     fun winnerDialog(name:String, message:String){
 
+        playerTwo.clear()
+        playerOne.clear()
         mpWinner?.start()
 
         val alert = AlertDialog.Builder(this)
@@ -438,16 +455,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setButtonId(noOfCards: Int, emptyCellId: Int): Button {
-        /* 1 -> btnSelect=btn1
-         2 -> btnSelect=btn2
-         3 -> btnSelect=btn3
-         4 -> btnSelect=btn4
-         5 -> btnSelect=btn5
-         6 -> btnSelect=btn6
-         7 -> btnSelect=btn7
-         8 -> btnSelect=btn8
-         9 -> btnSelect=btn9
-         else -> btnSelect=btn1*/
         when {
             (noOfCards == 3 && emptyCellId == 1) -> return btn1
             (noOfCards == 3 && emptyCellId == 2) -> return btn2
@@ -475,7 +482,6 @@ class MainActivity : AppCompatActivity() {
             (noOfCards == 4 && emptyCellId == 15) -> return btn25
             (noOfCards == 4 && emptyCellId == 16) -> return btn26
         }
-
         return Button(applicationContext)
     }
 
@@ -494,6 +500,9 @@ class MainActivity : AppCompatActivity() {
             finish()
             startActivity(intent)
         }
+        playerOne.clear()
+        playerTwo.clear()
+
     }
 
     //
@@ -512,6 +521,8 @@ class MainActivity : AppCompatActivity() {
             finish()
             startActivity(intent)
         }
+        playerOne.clear()
+        playerTwo.clear()
     }
 
     //
