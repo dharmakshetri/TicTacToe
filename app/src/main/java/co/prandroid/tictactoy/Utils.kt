@@ -1,4 +1,4 @@
-package co.prandroid.tictactoe
+package co.prandroid.tictactoy
 
 import java.util.*
 

@@ -9,7 +9,7 @@
     android:gravity="center"
     android:shrinkColumns="*"
     android:stretchColumns="*"
-    tools:context="co.prandroid.tictactoe.MainActivity">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvType"

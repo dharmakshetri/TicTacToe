@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/md_grey_50"
     android:gravity="center"
-    tools:context="co.prandroid.tictactoe.MainActivity">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvType"

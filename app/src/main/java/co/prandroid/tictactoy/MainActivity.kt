@@ -1,4 +1,4 @@
-package co.prandroid.tictactoe
+package co.prandroid.tictactoy
 
 
 import android.content.Context
@@ -11,10 +11,10 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import co.prandroid.tictactoe.Utils.Companion.gameStrategy3
-import co.prandroid.tictactoe.Utils.Companion.gameStrategy4
-import co.prandroid.tictactoe.Utils.Companion.playerOne
-import co.prandroid.tictactoe.Utils.Companion.playerTwo
+import co.prandroid.tictactoy.Utils.Companion.gameStrategy3
+import co.prandroid.tictactoy.Utils.Companion.gameStrategy4
+import co.prandroid.tictactoy.Utils.Companion.playerOne
+import co.prandroid.tictactoy.Utils.Companion.playerTwo
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
